@@ -5,61 +5,193 @@
 
 		<link rel="stylesheet" href="matrix_stylesheet.css">
 
+		<style type="text/css">
+			table {
+				background-color: lightblue;
+			}
+		</style>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 		<title>
 			Matrix Multiplier!
 		</title>
 	</head>
 	<body>
-		<h1>This is my Matrix Multiplier</h1>
+		<h1>This is my 3x3 Matrix Multiplier</h1>
+
+		<h2>Multiplication is produced in the form AB = C where A represents the first matrix, B the second matrix, and C the third matrix output to you!</h2>
+
+		<br>
+
+		<hr>
+
+		<br>
 
 		<form>
 			<table>
+				<caption>Matrix A</caption>
+
+				<tr style="background-color: lightblue">
+					<th>
+						<!--input type="submit" id="matA" value="Submit Matrix Changes"-->
+					</th>
+					<th>Column A</th>
+					<th>Column B</th>
+					<th>Column C</th>
+				</tr>
+
 				<colgroup>
-					<col span="3" style="width: 10px; background-color: yellow">
+					<col></col>
+					<col span="3" style="background-color: yellow">
 				</colgroup>
 
 				<tr>
+					<th>
+						Row 1
+					</th>
+
 					<td>
-						<input>
+						<input class="input" id="11a">
 					</td>
 
 					<td>
-						<input>
+						<input class="input" id="11b">
 					</td>
 
 					<td>
-						<input>
+						<input class="input" id="11c">
 					</td>
 				</tr>
 
 				<tr>
+					<th>
+						Row 2
+					</th>
+
 					<td>
-						<input>
+						<input class="input" id="12a">
 					</td>
 
 					<td>
-						<input>
+						<input class="input" id="12b">
 					</td>
 
 					<td>
-						<input>
+						<input class="input" id="12c">
 					</td>
 				</tr>
 
 				<tr>
+					<th>
+						Row 3
+					</th>
+
 					<td>
-						<input>
+						<input class="input" id="13a">
 					</td>
 
 					<td>
-						<input>
+						<input class="input" id="13b">
 					</td>
-					
+
 					<td>
-						<input>
+						<input class="input" id="13c">
 					</td>
 				</tr>
 			</table>
+
+			<br>
+
+			<table>
+				<caption>Matrix B</caption>
+
+				<tr style="background-color: lightblue">
+					<th>
+						<!--input type="submit" id="matB" value="Submit Matrix Changes"-->
+					</th>
+					<th>Column A</th>
+					<th>Column B</th>
+					<th>Column C</th>
+				</tr>
+
+				<colgroup>
+					<col></col>
+					<col span="3" style="background-color: yellow">
+				</colgroup>
+
+				<tr>
+					<th>
+						Row 1
+					</th>
+
+					<td>
+						<input class="input" id="211">
+					</td>
+
+					<td>
+						<input class="input" id="212">
+					</td>
+
+					<td>
+						<input class="input" id="213">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						Row 2
+					</th>
+
+					<td>
+						<input class="input" id="221">
+					</td>
+
+					<td>
+						<input class="input" id="222">
+					</td>
+
+					<td>
+						<input class="input" id="223">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						Row 3
+					</th>
+
+					<td>
+						<input class="input" id="231">
+					</td>
+
+					<td>
+						<input class="input" id="232">
+					</td>
+
+					<td>
+						<input class="input" id="233">
+					</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<input type="submit" onclick="MatrixMultiply()" value="Submit Matrices">
 		</form>
+
+		<hr>
+
+		<div>
+			<script>
+				var list = $( "input" )
+ 					.map( function() {
+ 						   return this.tagName;
+						})
+					.get()
+					.join( ", " );
+				$( "div" ).append( document.createTextNode( list ) );
+			</script>
+		</div>
 	</body>
 </html>
