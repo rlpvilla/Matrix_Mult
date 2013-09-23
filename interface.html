@@ -11,7 +11,7 @@
 			}
 		</style>
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
 		<title>
 			Matrix Multiplier!
@@ -36,9 +36,9 @@
 					<th>
 						<!--input type="submit" id="matA" value="Submit Matrix Changes"-->
 					</th>
-					<th>Column A</th>
-					<th>Column B</th>
-					<th>Column C</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
 				</tr>
 
 				<colgroup>
@@ -52,15 +52,15 @@
 					</th>
 
 					<td>
-						<input class="input" id="11a">
+						<input class="Row 1" id="11a">
 					</td>
 
 					<td>
-						<input class="input" id="11b">
+						<input class="Row 1" id="11b">
 					</td>
 
 					<td>
-						<input class="input" id="11c">
+						<input class="Row 1" id="11c">
 					</td>
 				</tr>
 
@@ -70,15 +70,15 @@
 					</th>
 
 					<td>
-						<input class="input" id="12a">
+						<input class="Row 2" id="12a">
 					</td>
 
 					<td>
-						<input class="input" id="12b">
+						<input class="Row 2" id="12b">
 					</td>
 
 					<td>
-						<input class="input" id="12c">
+						<input class="Row 2" id="12c">
 					</td>
 				</tr>
 
@@ -88,15 +88,15 @@
 					</th>
 
 					<td>
-						<input class="input" id="13a">
+						<input class="Row 3" id="13a">
 					</td>
 
 					<td>
-						<input class="input" id="13b">
+						<input class="Row 3" id="13b">
 					</td>
 
 					<td>
-						<input class="input" id="13c">
+						<input class="Row 3" id="13c">
 					</td>
 				</tr>
 			</table>
@@ -110,9 +110,9 @@
 					<th>
 						<!--input type="submit" id="matB" value="Submit Matrix Changes"-->
 					</th>
-					<th>Column A</th>
-					<th>Column B</th>
-					<th>Column C</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
 				</tr>
 
 				<colgroup>
@@ -126,15 +126,15 @@
 					</th>
 
 					<td>
-						<input class="input" id="211">
+						<input class="Column 1" id="211">
 					</td>
 
 					<td>
-						<input class="input" id="212">
+						<input class="Column 2" id="212">
 					</td>
 
 					<td>
-						<input class="input" id="213">
+						<input class="Column 3" id="213">
 					</td>
 				</tr>
 
@@ -144,15 +144,15 @@
 					</th>
 
 					<td>
-						<input class="input" id="221">
+						<input class="Column 1" id="221">
 					</td>
 
 					<td>
-						<input class="input" id="222">
+						<input class="Column 2" id="222">
 					</td>
 
 					<td>
-						<input class="input" id="223">
+						<input class="Column 3" id="223">
 					</td>
 				</tr>
 
@@ -162,35 +162,32 @@
 					</th>
 
 					<td>
-						<input class="input" id="231">
+						<input class="Column 1" id="231">
 					</td>
 
 					<td>
-						<input class="input" id="232">
+						<input class="Column 2" id="232">
 					</td>
 
 					<td>
-						<input class="input" id="233">
+						<input class="Column 3" id="233">
 					</td>
 				</tr>
 			</table>
 
 			<br>
 
-			<input type="submit" onclick="MatrixMultiply()" value="Submit Matrices">
+			<input type="submit" onclick="print()" value="Submit Matrices">
 		</form>
 
 		<hr>
 
-		<div>
+		<div id="messages">
 			<script>
-				var list = $( "input" )
- 					.map( function() {
- 						   return this.tagName;
-						})
-					.get()
-					.join( ", " );
-				$( "div" ).append( document.createTextNode( list ) );
+			var allInputs = $( ":input" );
+			var formChildren = $( "form > *" );
+			$( "#messages" ).text( "Found " + allInputs.length + " inputs and the form has " + formChildren.length + " children." ); 
+			$( "form" ).submit(function( event ) {event.preventDefault();});
 			</script>
 		</div>
 	</body>
