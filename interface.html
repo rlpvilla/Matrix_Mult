@@ -10,8 +10,7 @@
 				background-color: lightblue;
 			}
 		</style>
-
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		
 
 		<title>
 			Matrix Multiplier!
@@ -28,7 +27,7 @@
 
 		<br>
 
-		<form>
+		<form name="Multiplication">
 			<table>
 				<caption>Matrix A</caption>
 
@@ -52,15 +51,15 @@
 					</th>
 
 					<td>
-						<input class="Row 1" id="11a">
+						<input class="M1 R1 C1" type="number" value="1" id="111">
 					</td>
 
 					<td>
-						<input class="Row 1" id="11b">
+						<input class="M1 R1 C2" type="number" value="1" id="112">
 					</td>
 
 					<td>
-						<input class="Row 1" id="11c">
+						<input class="M1 R1 C3" type="number" value="1" id="113">
 					</td>
 				</tr>
 
@@ -70,15 +69,15 @@
 					</th>
 
 					<td>
-						<input class="Row 2" id="12a">
+						<input class="M1 R2 C1" type="number" value="1" id="121">
 					</td>
 
 					<td>
-						<input class="Row 2" id="12b">
+						<input class="M1 R2 C2" type="number" value="1" id="122">
 					</td>
 
 					<td>
-						<input class="Row 2" id="12c">
+						<input class="M1 R2 C3" type="number" value="1" id="123">
 					</td>
 				</tr>
 
@@ -88,15 +87,15 @@
 					</th>
 
 					<td>
-						<input class="Row 3" id="13a">
+						<input class="M1 R3 C1" type="number" value="1" id="131">
 					</td>
 
 					<td>
-						<input class="Row 3" id="13b">
+						<input class="M1 R3 C2" type="number" value="1" id="132">
 					</td>
 
 					<td>
-						<input class="Row 3" id="13c">
+						<input class="M1 R3 C3" type="number" value="1" id="133">
 					</td>
 				</tr>
 			</table>
@@ -126,15 +125,15 @@
 					</th>
 
 					<td>
-						<input class="Column 1" id="211">
+						<input class="M2 R1 C1" type="number" value="1" id="211">
 					</td>
 
 					<td>
-						<input class="Column 2" id="212">
+						<input class="M2 R1 C2" type="number" value="1" id="212">
 					</td>
 
 					<td>
-						<input class="Column 3" id="213">
+						<input class="M2 R1 C3" type="number" value="1" id="213">
 					</td>
 				</tr>
 
@@ -144,15 +143,15 @@
 					</th>
 
 					<td>
-						<input class="Column 1" id="221">
+						<input class="M2 R2 C1" type="number" value="1" id="221">
 					</td>
 
 					<td>
-						<input class="Column 2" id="222">
+						<input class="M2 R2 C2" type="number" value="1" id="222">
 					</td>
 
 					<td>
-						<input class="Column 3" id="223">
+						<input class="M2 R2 C3" type="number" value="1" id="223">
 					</td>
 				</tr>
 
@@ -162,33 +161,132 @@
 					</th>
 
 					<td>
-						<input class="Column 1" id="231">
+						<input class="M2 R3 C1" type="number" value="1" id="231">
 					</td>
 
 					<td>
-						<input class="Column 2" id="232">
+						<input class="M2 R3 C2" type="number" value="1" id="232">
 					</td>
 
 					<td>
-						<input class="Column 3" id="233">
+						<input class="M2 R3 C3" type="number" value="1" id="233">
 					</td>
 				</tr>
 			</table>
 
 			<br>
-
-			<input type="submit" onclick="print()" value="Submit Matrices">
 		</form>
+
+		<input type="button" id="mSubmit" value="Submit Matrices">
+
+		<table>
+				<caption>Matrix C</caption>
+
+				<tr style="background-color: lightblue">
+					<th>
+						<!--input type="submit" id="matB" value="Submit Matrix Changes"-->
+					</th>
+					<th>Column 1</th>
+					<th>Column 2</th>
+					<th>Column 3</th>
+				</tr>
+
+				<colgroup>
+					<col></col>
+					<col span="3" style="background-color: yellow">
+				</colgroup>
+
+				<tr>
+					<th>
+						Row 1
+					</th>
+
+					<td>
+						<input class="M3 R1 C1" type="number" value="0" id="311" disabled>
+					</td>
+
+					<td>
+						<input class="M3 R1 C2" type="number" value="0" id="312" disabled>
+					</td>
+
+					<td>
+						<input class="M3 R1 C3" type="number" value="0" id="313" disabled>
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						Row 2
+					</th>
+
+					<td>
+						<input class="M3 R2 C1" type="number" value="0" id="321" disabled>
+					</td>
+
+					<td>
+						<input class="M3 R2 C2" type="number" value="0" id="322" disabled>
+					</td>
+
+					<td>
+						<input class="M3 R2 C3" type="number" value="0" id="323" disabled>
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						Row 3
+					</th>
+
+					<td>
+						<input class="M3 R3 C1" type="number" value="0" id="331" disabled>
+					</td>
+
+					<td>
+						<input class="M3 R3 C2" type="number" value="0" id="332" disabled>
+					</td>
+
+					<td>
+						<input class="M3 R3 C3" type="number" value="0" id="333" disabled>
+					</td>
+				</tr>
+			</table>
 
 		<hr>
 
 		<div id="messages">
-			<script>
-			var allInputs = $( ":input" );
-			var formChildren = $( "form > *" );
-			$( "#messages" ).text( "Found " + allInputs.length + " inputs and the form has " + formChildren.length + " children." ); 
-			$( "form" ).submit(function( event ) {event.preventDefault();});
-			</script>
 		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+		<script type="text/javascript">
+			try {
+				$(document).ready(function() {
+					alert('loaded');
+				});
+			} catch(ex) {
+				alert('error: ' + ex.message);
+			}
+
+			$(document).ready(function() {
+				alert("Ready!");
+				$("#mSubmit").click(function () {
+					for (var r = 1; r < 4; r++) {
+						for (var c = 1; c < 4; c++) {
+							var CCache = 0;
+
+							for (var m = 1; m < 4; m++) {
+								var AStore = $(".M1" + ".R" + r + ".C" + m).val();
+
+								var BStore = $(".M2" + ".R" + m + ".C" + c).val();
+
+								CCache += AStore * BStore;
+							}
+
+							$(".M3" + ".R" + r + ".C" + c).val(CCache);
+						}
+					}
+					alert("Submit Runs!");
+				});
+			});
+		</script>
 	</body>
 </html>
