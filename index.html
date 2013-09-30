@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" description="General Two Dimensional Matrix Multiplier">
+
+		<title>
+			Matrix Multiplier
+		</title>
+
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<h1>
+			Define Your Multipliers!
+		</h1>
+
+		<hr>
+
+		<form name="details" method="post">
+			<h2>
+				Describe the dimensions of your first Matrix!
+			</h2>
+
+			<p>
+				Rows: <input name="ARows" type="text" value="2">
+			</p>
+			
+			<p>
+				Columns: <input name="AColumns" type="text" value="2">
+			</p>
+			
+			<h2>
+				Describe the dimensions of your second Matrix!
+			</h2>
+			
+			<p>
+				Rows: <input name="BRows" type="text" value="2">
+			</p>
+			
+			<p>
+				Columns: <input name="BColumns" type="text" value="2">
+			</p>
+
+			<h2>
+				Ready: <input name="multiply" type="submit">
+			</h2>
+		</form>
+
+		<div>
+			<h1>
+				
+			</h1>
+		</div>
+
+		<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#mSubmit").click(function () {
+					for (var r = 1; r < rows; r++) {
+						for (var c = 1; c < columns; c++) {
+							var CCache = 0;
+
+							for (var m = 1; m < shared; m++) {
+								var AStore = $(".M1" + ".R" + r + ".C" + m).val();
+
+								var BStore = $(".M2" + ".R" + m + ".C" + c).val();
+
+								CCache += AStore * BStore;
+							}
+
+							$(".M3" + ".R" + r + ".C" + c).val(CCache);
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
