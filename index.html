@@ -17,17 +17,17 @@
 
 		<hr>
 
-		<form name="details" method="post">
+		<form action="/define" name="details" method="post">
 			<h2>
 				Describe the dimensions of your first Matrix!
 			</h2>
 
 			<p>
-				Rows: <input name="ARows" type="text" value="2">
+				Rows: <input name="aRows" type="text" value="{{.ARows}}">
 			</p>
 			
 			<p>
-				Columns: <input name="AColumns" type="text" value="2">
+				Columns: <input name="aColumns" type="text" value="{{.AColumns}}">
 			</p>
 			
 			<h2>
@@ -35,15 +35,15 @@
 			</h2>
 			
 			<p>
-				Rows: <input name="BRows" type="text" value="2">
+				Rows: <input name="bRows" type="text" value="{{.AColumns}}" disabled> <p>  This number will always correspond to the Columns of Matrix A!  </p>
 			</p>
 			
 			<p>
-				Columns: <input name="BColumns" type="text" value="2">
+				Columns: <input name="bColumns" type="text" value="{{.BColumns}}">
 			</p>
 
 			<h2>
-				Ready: <input name="multiply" type="submit">
+				Ready: <input type="submit">
 			</h2>
 		</form>
 
@@ -55,34 +55,120 @@
 
 		<hr>
 
+		<div id="M1">
 
+		</div>
 
+		<div id="M2">
 
+		</div>
 
+		<br>
 
+		<input type="button" id="mSubmit" value="Submit Matrices">
 
+		<hr>
 
+		<div id="M3">
 
-
-
-
-
-
-
-
-
-
-
+		</div>
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
+				alert("Construction Script Begun");
+				var AContent = "<table><caption>Matrix A</caption>";
+
+				AContent += "<tr><td></td>"
+
+				for (var columnsA = 1; columnsA <= {{.AColumns}}; columnsA++) {
+					AContent += ("<th>Column " + columnsA + "</th>");
+				}
+
+				AContent += "</tr>";
+
+				for (var rowsA = 1; rowsA <= {{.ARows}}; rowsA++) {
+
+					AContent += "<tr>";
+					
+					AContent += ('<th>Row ' + rowsA + '</th>');
+					
+					for (var columnsA = 1; columnsA <= {{.AColumns}}; columnsA++) {
+						AContent += ('<td><input class=".M1' + ".R" + rowsA + ".C" + columnsA + '" type="number" value="0"></td>');
+					}
+					AContent += "</tr>";
+				}
+
+				AContent += "</table>";
+
+				alert("AContent constructed");
+
+				var BContent = "<table><caption>Matrix B</caption>";
+
+				BContent += "<tr><td></td>"
+
+				for (var columnsB = 1; columnsB <= {{.BColumns}}; columnsB++) {
+					BContent += ("<th>Column " + columnsB + "</th>");
+				}
+
+				BContent += "</tr>";
+
+				for (var rowsB = 1; rowsB <= {{.AColumns}}; rowsB++) {
+					
+					BContent += "<tr>";
+
+					BContent += ("<th>Row " + rowsB + "</th>");
+					
+					for (var columnsB = 1; columnsB <= {{.BColumns}}; columnsB++) {
+						BContent += ('<td><input class=".M1' + ".R" + rowsB + ".C" + columnsB + '" type="number" value="0"></td>');
+					}
+					
+					BContent += "</tr>";
+				}
+				
+				BContent += "</table>";
+
+				alert("BContent constructed");
+
+				var CContent = "<table><caption>Matrix C</caption>";
+
+				CContent += "<tr><td></td>"
+
+				for (var columnsC = 1; columnsC <= {{.BColumns}}; columnsC++) {
+					CContent += ("<th>Column " + columnsC + "</th>");
+				}
+
+				CContent += "</tr>";
+				
+				for (var rowsC = 1; rowsC <= {{.ARows}}; rowsC++) {
+
+					CContent += "<tr>";
+
+					CContent += ("<th>Row " + rowsC + "</th>");
+					
+					for (var columnsC = 1; columnsC <= {{.BColumns}}; columnsC++) {
+						CContent += ('<td><input class=".M1' + ".R" + rowsC + ".C" + columnsC + '" type="number" value="0" disabled></td>');
+					}
+					
+					CContent += "</tr>";
+				}
+				
+				CContent += "</table>";
+
+				alert("CContent constructed");
+
+				$("#M1").html(AContent);
+				$("#M2").html(BContent);
+				$("#M3").html(CContent);
+			});
+
+			$(document).ready(function() {
 				$("#mSubmit").click(function () {
-					for (var r = 1; r < rows; r++) {
-						for (var c = 1; c < columns; c++) {
+					for (var r = 1; r <= {{.ARows}}; r++) {
+						for (var c = 1; c <= {{.BColumns}}; c++) {
 							var CCache = 0;
 
-							for (var m = 1; m < shared; m++) {
+							for (var m = 1; m <= {{.AColumns}}; m++) {
 								var AStore = $(".M1" + ".R" + r + ".C" + m).val();
 
 								var BStore = $(".M2" + ".R" + m + ".C" + c).val();
